@@ -1,0 +1,219 @@
+$white-font-color: #fff;
+$dark-font-color: #4b4f5b;
+$btn-font-color: #50baa4;
+
+$default-padding: 10px;
+
+/********** Mixin **********/
+
+@mixin respond($breakpoint) {
+  // $breakpoint is simply a variable that can have several values
+
+  @if $breakpoint==tablet {
+    // here `laptop` is the value of $breakpoint
+    // when call laptop, we mean the following piece of code
+
+    @media only screen and (max-width: 600px) {
+      @content;
+    }
+  }
+
+  @if $breakpoint==mobile {
+    @media only screen and (max-width: 480px) {
+      @content;
+    }
+  }
+}
+
+/**** Header Block *****/
+
+.header {
+  position: absolute;
+  left: 0;
+  right: 0;
+  z-index: 10;
+
+  .navbar-collapse {  
+    .nav-link {
+      color: $white-font-color;
+      padding-left: 10px;
+    }
+  }
+}
+
+.navbar-brand {
+  @include respond(tablet) {
+    width: 200px;
+  }
+}
+
+.hero {
+  min-height: 520px;
+  max-height: 520px;
+  background: url(../images/banner.jpg) top center;
+  background-size: cover;
+  position: relative;
+}
+
+.hero-container {
+  position: absolute;
+  bottom: 0;
+  top: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  text-align: center;
+  padding: 0 15px;
+  color: $white-font-color;
+  background: rgb(45 44 44 / 50%);
+
+  .btn {
+    background-color: $btn-font-color;
+    border: none;
+  }
+}
+
+/********* Body Block *********/
+
+.gray-bg {
+  background-color: #eeeeee;
+  padding: $default-padding + 40px;
+
+  .content-block {
+    @extend .gray-bg;
+
+    .more-btn {
+      border: 2px solid $btn-font-color;
+      color: $btn-font-color;
+
+      &:hover {
+        color: $white-font-color;
+        background-color: $btn-font-color;
+      }
+    }
+  }
+
+  .thumb-content-block {
+    background-color: $white-font-color;
+    color: $dark-font-color;
+  }
+}
+
+.gray-bg {
+  @include respond(tablet) {
+    padding: 10px;
+  }
+}
+
+.header .navbar-collapse .navbar-nav {
+  @include respond(tablet) {
+    background-color: #545b62;
+  }
+
+  @include respond(mobile) {
+    background-color: #545b62;
+  }
+}
+
+/********* Gallery Block *********/
+
+.gallery-block {
+  padding: 100px 20px 100px 20px;
+  .read-more-btn {
+    border-color: $btn-font-color;
+    border: 2px solid $btn-font-color;
+    color: $btn-font-color;
+    background-color: $white-font-color;
+    &:hover {
+      outline: none;
+      box-shadow: none;
+      background-color: $btn-font-color;
+      color: $white-font-color;
+    }
+  }
+}
+
+.align-items-center {
+  -ms-flex-align: center !important;
+  align-items: center !important;
+}
+.d-flex {
+  display: -ms-flexbox !important;
+  display: flex !important;
+}
+
+.read-more-block {
+  @extend .hero;
+  background: url(../images/background.jpg);
+  min-height: 450px;
+  max-height: 450px;
+
+  .read-more-btn {
+    background-color: transparent;
+    border: 2px solid $white-font-color;
+    color: $white-font-color;
+    outline: none;
+  }
+}
+
+.black-bg {
+  background-color: #1e2832;
+  color: $white-font-color;
+}
+
+/********* Get In Touch Block *********/
+
+.get-in-touch {
+  input,
+  textarea {
+    border-radius: 0;
+    border: none;
+    background-color: $dark-font-color;
+    color: #bec6cc;
+  }
+
+  .form-control::-webkit-input-placeholder {
+    color: #bec6cc;
+  }
+
+  .btn {
+    background-color: #1e2832;
+    color: $white-font-color;
+    border: 2px solid $white-font-color;
+    box-shadow: none;
+    outline: none;
+
+    &:hover {
+      background-color: $btn-font-color;
+    }
+  }
+}
+
+.get-in-touch {
+  padding: 100px 150px;
+
+  @include respond(tablet) {
+    padding: 10px;
+  }
+
+  @include respond(mobile) {
+    padding: 10px;
+  }
+}
+
+/********* Footer Block *********/
+
+.footer-section {
+  border-top: 1px solid #a2a6a9;
+
+  ul {
+    li {
+      a {
+        color: #a2a6a9;
+      }
+    }
+  }
+}
